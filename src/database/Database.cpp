@@ -4,7 +4,7 @@
 Database::Database() : db(nullptr) {}
 
 Database::~Database() {
-    disconnect(); // Ensure the database connection is closed
+    disconnect();
 }
 
 bool Database::connect(const std::string& dbName) {
@@ -34,4 +34,13 @@ bool Database::executeQuery(const std::string& query) {
         return false;
     }
     return true;
+}
+
+bool Database::insertExpense(const std::string& description, double amount, const std::string& date) {
+    // Prepare SQL statement
+    std::string sql = "INSERT INTO expenses (description, amount, date) VALUES ('" +
+                      description + "', " + std::to_string(amount) + ", '" + date + "');";
+
+    // Execute SQL statement
+    return executeQuery(sql);
 }

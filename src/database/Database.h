@@ -15,6 +15,9 @@ public:
     bool connect(const std::string& dbName);
     void disconnect();
     bool executeQuery(const std::string& query);
+
+    // New method to insert expenses
+    bool insertExpense(const std::string& description, double amount, const std::string& date);
 };
 
 #endif // DATABASE_H
